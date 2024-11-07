@@ -7,34 +7,24 @@
 // @lc code=start
 class Solution {
 public:
-
-
-
     int removeElement(vector<int>& nums, int val) {
-        int left = 0;
-        int num = nums.size() - 1;
-        while (nums[num] == val) {
-            nums.pop_back();
-            num--;
-        }
-
-        while (left < num) {
-            if (nums[left] == val) {
-                swap(nums[left], nums[num]);
-                while (nums[num] == val)
-                    num--;
-                    nums.pop_back(); 
+        int front = 0, back = 0;
+        int num = nums.size();
+        while (back < num) {
+            if (nums[back] != val) {
+                nums[front] = nums[back];
+                front++;
             }
-            left++;
+            back++;   
         }
-        return nums.size(); 
+        return front;
     }
 };
 // @lc code=end
 
 
 
-// -----法一-----------
+// -----法一:数组-----------
     // void getNeibor(int& right, vector<int>& nums, int val) {
     //     for (; right >= 0; right--) {
     //         if (nums[right] != val)
@@ -57,3 +47,20 @@ public:
     //         left++;
     //     }
     //     return right + 1;
+
+
+//-----------法二:删除元素-------------
+        // int left = 0;
+        // int num = nums.size() - 1;
+        // while (left <= num) {
+        //     if (nums[left] == val) {
+        //         swap(nums[left], nums[num]);
+        //         while (num >= 0 && nums[num] == val){
+        //             num--;
+        //             nums.pop_back(); 
+        //         } 
+        //     }
+        //     else
+        //         left++;
+        // }
+        // return nums.size(); 

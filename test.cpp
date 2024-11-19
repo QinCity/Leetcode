@@ -1,1 +1,4 @@
-whil
+while (/* condition */) {
+    /* code */
+}
+while
